@@ -119,6 +119,7 @@ jobs:
 
       - name: Verify frontend build contents
         run: |
+          set -x # Enable verbose output for debugging
           cd frontend
           ls -la dist/ # Vite defaults to 'dist', confirm its contents
           if [ -d "dist" ] && [ "$(ls -A dist)" ]; then
@@ -132,14 +133,33 @@ jobs:
         run: |
           set -x # Enable verbose output for debugging
           cd frontend
-          # Vite typically builds to 'dist', so we explicitly prioritize that check.
-          if [ -d "dist" ]; then
-            tar -czvf frontend-build.tar.gz dist/ || exit 1
-          else
+
+          # Check if 'dist' directory exists
+          if [ ! -d "dist" ]; then
             echo "::error::'dist/' directory not found. Cannot package frontend."
             exit 1
           fi
-          ls -l frontend-build.tar.gz || echo "::error::Failed to create frontend-build.tar.gz! Failing step." && exit 1
+
+          # Attempt to create the tar archive
+          echo "Attempting to create frontend-build.tar.gz from dist/..."
+          tar -czvf frontend-build.tar.gz dist/
+          TAR_EXIT_CODE=$? # Capture exit code of tar command
+
+          if [ $TAR_EXIT_CODE -ne 0 ]; then
+            echo "::error::Tar command failed with exit code $TAR_EXIT_CODE. Cannot package frontend."
+            exit 1 # Explicitly fail the step if tar failed
+          fi
+          echo "Tar archive created successfully."
+
+          # Verify the tar archive was created and exists
+          ls -l frontend-build.tar.gz
+          LS_EXIT_CODE=$? # Capture exit code of ls command
+
+          if [ $LS_EXIT_CODE -ne 0 ]; then
+            echo "::error::'ls -l' failed to find the created archive. Packaging error."
+            exit 1 # Explicitly fail the step if ls failed
+          fi
+          echo "Frontend packaging appears successful."
 
       - name: Upload frontend artifacts
         uses: actions/upload-artifact@v4
