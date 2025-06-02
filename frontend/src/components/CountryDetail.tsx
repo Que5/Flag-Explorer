@@ -1,18 +1,15 @@
-// new-vite-frontend/src/components/CountryDetail.tsx
-
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // Import necessary types from your Redux setup
-import { RootState, AppDispatch } from '../redux/store'; // For the overall store state and dispatch
+import { RootState, AppDispatch } from '../redux/store'; 
 
 
 // Import your action creator
-import { fetchCountries } from '../redux/action'; // Ensure the .ts extension is implicit or explicit
+import { fetchCountries } from '../redux/action'; 
 
 const CountryDetail = () => {
-  // Type the useParams hook to expect a 'name' property which is a string
   const { name } = useParams<{ name: string }>();
 
   // Explicitly type the dispatch hook
@@ -27,13 +24,9 @@ const CountryDetail = () => {
   useEffect(() => {
     // Only dispatch if 'name' is available from the URL params
     if (name) {
-      // Your current fetchCountries action fetches *all* countries.
-      // If your API supports fetching a single country by name, you'd modify
-      // fetchCountries or create a new action (e.g., fetchCountryByName).
-      // For now, we fetch all, and then filter locally.
       dispatch(fetchCountries());
     }
-  }, [dispatch, name]); // Include 'name' in dependencies as useEffect depends on it
+  }, [dispatch, name]); 
 
   // Render loading and error states first
   if (loading) return <div>Loading...</div>;
@@ -50,7 +43,6 @@ const CountryDetail = () => {
     <div>
       <h2>{country.name}</h2>
       <img src={country.flag} alt={`${country.name} flag`} width="200" />
-      {/* Access population, using optional chaining and nullish coalescing for safety */}
       <p>Population: {country.population?.toLocaleString() || 'N/A'}</p>
       {/* Access capital, handling array or string types, with a fallback */}
       <p>Capital: {Array.isArray(country.capital) ? country.capital.join(', ') : country.capital || 'N/A'}</p>
