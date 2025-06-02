@@ -1,9 +1,9 @@
-import React from 'react';
+
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { store } from './redux/store';
-import FlagGrid from './components/FlagGrid';
-import CountryDetail from './components/CountryDetail';
+import store from './redux/store';
+import FlagGrid from './components/FlagGrid.tsx';
+import CountryDetail from './components/CountryDetail.tsx';
 
 const App = () => (
   <Provider store={store}>

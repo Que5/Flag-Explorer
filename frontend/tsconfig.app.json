@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",          // <-- THIS IS CRUCIAL!
+    "jsx": "react-jsx",
 
     /* Linting */
     "strict": true,
@@ -21,16 +21,16 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Custom additions for your migration */
-    "allowJs": true,
-    "checkJs": true,
-    "esModuleInterop": true,
-    "baseUrl": "./src",
+    "allowJs": true,           // Allows TypeScript to process JavaScript files
+    "checkJs": true,           // Enables semantic checking in JavaScript files (optional, but good for catching issues)
+    "esModuleInterop": true,   // Provides better compatibility for default exports
+    "baseUrl": "./src",        // For absolute imports like '@/components/FlagGrid.js'
     "paths": {
       "@/*": ["*"]
     },
     // Ensure these match your React 18.2.0:
-    "types": ["react", "react-dom"] // This is generally good practice
+    "types": ["react", "react-dom"]
   },
-  "include": ["src", "vite-env.d.ts", "vitest.config.ts"],
-  "exclude": ["node_modules", "dist"] // Good to explicitly exclude
+  "include": ["src", "vite-env.d.ts", "vitest.config.ts"], // Ensure 'src' and test config are included
+  // REMOVED: "references": [{ "path": "./tsconfig.node.json" }]
 }
