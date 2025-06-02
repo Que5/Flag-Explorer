@@ -21,16 +21,16 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Custom additions for your migration */
-    "allowJs": true,           // Allows TypeScript to process JavaScript files
-    "checkJs": true,           // Enables semantic checking in JavaScript files (optional, but good for catching issues)
-    "esModuleInterop": true,   // Provides better compatibility for default exports
-    "baseUrl": "./src",        // For absolute imports like '@/components/FlagGrid.js'
+    "allowJs": true,           
+    "checkJs": true,           
+    "esModuleInterop": true,   
+    "baseUrl": "./src",        
     "paths": {
       "@/*": ["*"]
     },
     // Ensure these match your React 18.2.0:
     "types": ["react", "react-dom"]
   },
-  "include": ["src", "vite-env.d.ts", "vitest.config.ts"], // Ensure 'src' and test config are included
+  "include": ["src", "vite-env.d.ts", "vitest.config.ts"], 
   // REMOVED: "references": [{ "path": "./tsconfig.node.json" }]
 }
