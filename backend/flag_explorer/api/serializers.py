@@ -7,6 +7,5 @@ class CountrySerializer(serializers.Serializer):
     flag = serializers.URLField(source="flags.png")
 
     def get_capital(self, obj):
-        # Safely access the capital field
         capital_list = obj.get("capital", [])
         return capital_list[0] if capital_list else None
