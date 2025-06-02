@@ -1,12 +1,12 @@
 // new-vite-frontend/src/components/CountryDetail.tsx
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // Import necessary types from your Redux setup
 import { RootState, AppDispatch } from '../redux/store'; // For the overall store state and dispatch
-import { Country } from '../redux/types'; // For the individual Country interface
+
 
 // Import your action creator
 import { fetchCountries } from '../redux/action'; // Ensure the .ts extension is implicit or explicit
