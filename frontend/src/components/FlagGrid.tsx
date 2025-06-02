@@ -1,5 +1,3 @@
-// new-vite-frontend/src/components/FlagGrid.tsx
-
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -31,10 +29,8 @@ const FlagGrid = () => {
       }}
     >
       {countries.map((country) => (
-        // <--- ADD THE COUNTRY NAME AS TEXT HERE!
         <Link to={`/country/${country.name}`} key={country.name} style={{ textAlign: 'center' }}>
           <img src={country.flag} alt={`${country.name} flag`} width="100" />
-          {/* Add the country name as a simple paragraph or div */}
           <p>{country.name}</p> {/* Or <div>{country.name}</div> */}
         </Link>
       ))}
