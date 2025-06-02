@@ -13,7 +13,7 @@ class TestCountryListView:
         mock_get_all.return_value = [
             {"name": {"common": "France"}, "population": 67391582, "capital": ["Paris"], "flags": {"png": "url"}},
         ]
-        response = self.client.get('/api/countries/')
+        response = self.client.get('/api/v1/countries/')
         assert response.status_code == 200
         assert len(response.data) == 1
         assert response.data[0]["name"] == "France"
@@ -23,6 +23,6 @@ class TestCountryListView:
         mock_get_by_name.return_value = [
             {"name": {"common": "France"}, "population": 67391582, "capital": ["Paris"], "flags": {"png": "url"}},
         ]
-        response = self.client.get('/api/countries/?name=France')
+        response = self.client.get('/api/v1/countries/?name=France')
         assert response.status_code == 200
         assert response.data[0]["name"] == "France"
