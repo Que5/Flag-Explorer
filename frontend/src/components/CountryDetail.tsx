@@ -2,27 +2,20 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-// Import necessary types from your Redux setup
 import { RootState, AppDispatch } from '../redux/store'; 
 
-
-// Import your action creator
 import { fetchCountries } from '../redux/action'; 
 
 const CountryDetail = () => {
   const { name } = useParams<{ name: string }>();
 
-  // Explicitly type the dispatch hook
   const dispatch: AppDispatch = useDispatch();
 
-  // Explicitly type the useSelector hook with RootState for full type safety
-  // Then destructure the 'countries' slice from the RootState
   const { countries, loading, error } = useSelector(
     (state: RootState) => state.countries
   );
 
   useEffect(() => {
-    // Only dispatch if 'name' is available from the URL params
     if (name) {
       dispatch(fetchCountries());
     }
