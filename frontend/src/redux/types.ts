@@ -1,18 +1,11 @@
-// new-vite-frontend/src/redux/types.ts
-
 import { PayloadAction } from '@reduxjs/toolkit';
 
 // Define the shape of a single Country object
-// These properties should match what your API returns.
 export interface Country {
   name: string;
   flag: string;
   population: number; // RestCountries typically returns this as a number
   capital: string[] | string | null; // Can be an array (for multiple capitals), a single string, or null
-  // Add any other properties your country objects have based on your API response
-  // e.g., region: string;
-  // e.g., currencies: Array<{ code: string; name: string; symbol: string }>;
-  // e.g., languages: Array<{ iso639_1: string; iso639_2: string; name: string; nativeName: string }>;
 }
 
 // Define the shape of your Redux state slice for countries
