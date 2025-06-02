@@ -1,5 +1,3 @@
-// new-vite-frontend/src/redux/reducer.ts
-
 import { AnyAction } from 'redux'; // <-- IMPORT AnyAction from 'redux'
 import {
   FETCH_COUNTRIES_REQUEST,
@@ -19,7 +17,7 @@ const initialState: CountriesState = {
 // The reducer function with explicit types for state and action
 const countryReducer = (
   state: CountriesState = initialState,
-  action: AnyAction // <-- CHANGE THIS TO AnyAction (This is the key to solving the error)
+  action: AnyAction 
 ): CountriesState => {
   switch (action.type) {
     case FETCH_COUNTRIES_REQUEST:
@@ -34,17 +32,15 @@ const countryReducer = (
       return {
         ...state,
         loading: false,
-        countries: action.payload as Country[], // <-- Type assertion
+        countries: action.payload as Country[], 
         error: null,
       };
     case FETCH_COUNTRIES_FAILURE:
-      // When action.type is FETCH_COUNTRIES_FAILURE, we know action.payload is string
-      // We use a type assertion `as string` to tell TypeScript this.
       return {
         ...state,
         loading: false,
         countries: [],
-        error: action.payload as string, // <-- Type assertion
+        error: action.payload as string, 
       };
     default:
       return state;
