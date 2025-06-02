@@ -1,5 +1,3 @@
-// new-vite-frontend/src/tests/FlagGrid.test.tsx
-
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -14,7 +12,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { vi } from 'vitest';
 import axios from 'axios';
 
-// Mock axios globally. This creates a mock for the entire module.
+
 vi.mock('axios');
 
 const setupStore = (initialState?: Partial<RootState>) => {
@@ -35,17 +33,12 @@ beforeEach(() => {
   (axios.get as ReturnType<typeof vi.fn>).mockClear();
 });
 
-// `afterEach` can still be useful for other cleanups, but `mockClear` handles this for axios.
-// If you have other mocks or cleanup that needs to happen, keep `afterEach`.
-// For this specific issue, `beforeEach(axios.get.mockClear)` is the key.
 afterEach(() => {
-  // vi.clearAllMocks(); // This is redundant if only axios.get is mocked and cleared in beforeEach
+  
 });
 
-
 test('renders loading state', async () => {
-  // Use mockImplementation to ensure this specific mock is used
-  // (axios.get as ReturnType<typeof vi.fn>).mockImplementationOnce(() => new Promise(() => {})); // This was okay, but mockImplementation is clearer here
+  
   (axios.get as ReturnType<typeof vi.fn>).mockImplementation(() => new Promise(() => {}));
 
 
@@ -122,9 +115,6 @@ test('renders countries when loaded successfully', async () => {
 
 
 test('dispatches fetchCountries on mount', async () => {
-  // No need to call mockRestore() for axios.get if we use mockImplementation() in beforeEach.
-  // The beforeEach(axios.get.mockClear()) already resets its call count.
-  // We just need to define its mock implementation for THIS test.
   (axios.get as ReturnType<typeof vi.fn>).mockImplementation(() => Promise.resolve({ data: [] }));
 
   const mockStore = setupStore({
@@ -140,7 +130,7 @@ test('dispatches fetchCountries on mount', async () => {
   );
 
   await waitFor(() => {
-    expect(axios.get).toHaveBeenCalledTimes(1); // This should now pass!
+    expect(axios.get).toHaveBeenCalledTimes(1); 
     expect(axios.get).toHaveBeenCalledWith('https://restcountries.com/v2/all');
   });
 });
