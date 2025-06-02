@@ -94,7 +94,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Node.js 18 is a good LTS version for Vite
+          node-version: '18' 
 
       - name: Install frontend dependencies
         run: |
