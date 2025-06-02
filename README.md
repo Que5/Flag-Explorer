@@ -286,5 +286,5 @@ Flag-Explorer/
 ├── README.md                 # This file
 └── ...                       # Other project-level files
 CI/CD Pipeline
-This project uses GitHub Actions for continuous integration and continuous deployment. The pipeline is defined in .github/workflows/ci_pipeline.yml. It automatically runs tests and builds both the backend and frontend on pushes and pull requests to the main branch.
+This project uses GitHub Actions for continuous integration and continuous deployment. The pipeline is defined in .github/workflows/ci.yml. It automatically runs tests and builds both the backend and frontend on pushes and pull requests to the main branch.
 
