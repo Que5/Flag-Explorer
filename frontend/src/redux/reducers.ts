@@ -1,10 +1,10 @@
-import { AnyAction } from 'redux'; // <-- IMPORT AnyAction from 'redux'
+import { AnyAction } from 'redux'; 
 import {
   FETCH_COUNTRIES_REQUEST,
   FETCH_COUNTRIES_SUCCESS,
   FETCH_COUNTRIES_FAILURE,
   CountriesState,
-  Country, // <-- IMPORT Country as we'll assert it
+  Country, 
 } from './types';
 
 // Define the initial state with its type
@@ -27,8 +27,6 @@ const countryReducer = (
         error: null,
       };
     case FETCH_COUNTRIES_SUCCESS:
-      // When action.type is FETCH_COUNTRIES_SUCCESS, we know action.payload is Country[]
-      // We use a type assertion `as Country[]` to tell TypeScript this.
       return {
         ...state,
         loading: false,
