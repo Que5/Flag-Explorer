@@ -31,7 +31,7 @@ const FlagGrid = () => {
       {countries.map((country) => (
         <Link to={`/country/${country.name}`} key={country.name} style={{ textAlign: 'center' }}>
           <img src={country.flag} alt={`${country.name} flag`} width="100" />
-          <p>{country.name}</p> {/* Or <div>{country.name}</div> */}
+          <p>{country.name}</p> 
         </Link>
       ))}
     </div>
