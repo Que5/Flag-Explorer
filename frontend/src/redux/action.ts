@@ -9,7 +9,6 @@ import {
 
 import { AppDispatch } from './store'; 
 
-// Action creators with explicit return types
 export const fetchCountriesRequest = (): CountryActionTypes => ({
   type: FETCH_COUNTRIES_REQUEST,
 });
@@ -24,7 +23,7 @@ export const fetchCountriesFailure = (error: string): CountryActionTypes => ({
   payload: error,
 });
 
-// The dispatch parameter is typed using AppDispatch inferred from the store.
+
 export const fetchCountries = () => async (dispatch: AppDispatch) => {
   dispatch(fetchCountriesRequest());
   try {
