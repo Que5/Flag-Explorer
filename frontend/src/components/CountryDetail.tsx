@@ -29,7 +29,6 @@ const CountryDetail = () => {
   // Use .find() to get the first matching country
   const country = countries.find(c => c.name === name);
 
-  // If no country is found after loading, display a message
   if (!country) return <div>No country found or data not loaded. Please return to the main list.</div>;
 
   return (
